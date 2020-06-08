@@ -39,12 +39,16 @@ public class LoginScreenController implements Initializable {
     private TextField txt_password;
     @FXML
     private ImageView img_loginBackground;
+    private DatabaseHandler db;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+//        PrintEngine pe = new PrintEngine();
+//        pe.print();
+        db = new DatabaseHandler();
         File file = new File("src/resources/tractor.jpg");
         Image image = new Image(file.toURI().toString()) {};
         img_loginBackground.setImage(image);
@@ -56,12 +60,15 @@ public class LoginScreenController implements Initializable {
         try {
             //txt_username = new TextField();
             //txt_password = new TextField();
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+            AnchorPane userPane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
+            AnchorPane adminPane = FXMLLoader.load(getClass().getResource("AdminScreen.fxml"));
             String username = txt_username.getText();
             String password = txt_password.getText();
             System.out.println(username + "\t" + password);
             if(username.equals("user") && password.equals("pass"))
-                login_rootPane.getChildren().setAll(pane);
+                login_rootPane.getChildren().setAll(userPane);
+            else if(username.equals("admin") && password.equals("admin"))
+                login_rootPane.getChildren().setAll(adminPane);
             else
                 System.out.println("Incorrect username or password!");
         } catch (IOException ex) {
