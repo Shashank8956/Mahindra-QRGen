@@ -16,9 +16,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="login_rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1432.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qr.code.generator.LoginScreenController">
+<AnchorPane id="AnchorPane" fx:id="login_rootPane" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1252.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qr.code.generator.LoginScreenController">
    <children>
-      <ImageView fx:id="img_loginBackground" fitHeight="778.0" fitWidth="1432.0" pickOnBounds="true">
+      <ImageView fx:id="img_loginBackground" fitHeight="655.0" fitWidth="1252.0" pickOnBounds="true">
          <image>
             <Image url="@../../../resources/tractor.jpg" />
          </image>
@@ -33,51 +33,45 @@
             </Lighting>
          </effect>
       </ImageView>
-      <AnchorPane layoutX="554.0" layoutY="175.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="325.0">
-         <children>
-            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="428.0" stroke="BLACK" strokeType="INSIDE" width="325.0">
-               <effect>
-                  <DropShadow height="101.06" radius="50.03" width="101.06" />
-               </effect>
-            </Rectangle>
-            <Label layoutX="14.0" layoutY="29.0" text="Sign In" textFill="#5b5b5b">
-               <font>
-                  <Font name="System Bold" size="25.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txt_username" layoutX="40.0" layoutY="134.0" prefHeight="36.0" prefWidth="245.0" promptText="Username">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </TextField>
-            <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="40.0" layoutY="260.0" onAction="#loginEventHandler" prefHeight="36.0" prefWidth="245.0" ripplerFill="#9e9e9e" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </JFXButton>
-            <PasswordField fx:id="txt_password" layoutX="40.0" layoutY="196.0" prefHeight="36.0" prefWidth="245.0" promptText="Password">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </PasswordField>
-         </children>
-      </AnchorPane>
+      <AnchorPane layoutX="295.0" layoutY="53.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="428.0" prefWidth="325.0" />
       <Label layoutX="14.0" layoutY="14.0" text="QR Generator" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <VBox layoutX="1390.0" layoutY="14.0">
-         <children>
-            <Label fx:id="lbl_close" alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#closeApp" prefHeight="27.0" prefWidth="30.0" text="X" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
-         </children>
-      </VBox>
+      <VBox layoutX="1390.0" layoutY="14.0" />
+      <Label fx:id="lbl_close" alignment="CENTER" contentDisplay="CENTER" layoutX="1215.0" layoutY="5.0" onMouseClicked="#closeApp" prefHeight="27.0" prefWidth="30.0" text="X" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="WHITE" height="428.0" layoutX="464.0" layoutY="114.0" stroke="BLACK" strokeType="INSIDE" width="325.0">
+         <effect>
+            <DropShadow height="101.06" radius="50.03" width="101.06" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="478.0" layoutY="143.0" text="Sign In" textFill="#5b5b5b">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txt_username" layoutX="504.0" layoutY="248.0" prefHeight="36.0" prefWidth="245.0" promptText="Username">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="txt_password" layoutX="504.0" layoutY="310.0" prefHeight="36.0" prefWidth="245.0" promptText="Password">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </PasswordField>
+      <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="504.0" layoutY="374.0" onAction="#loginEventHandler" prefHeight="36.0" prefWidth="245.0" ripplerFill="#9e9e9e" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

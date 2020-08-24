@@ -5,7 +5,6 @@
  */
 package qr.code.generator;
 
-
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -28,7 +27,7 @@ import javafx.scene.layout.AnchorPane;
  * @author Spongebob
  */
 public class LoginScreenController implements Initializable {
-    
+
     @FXML
     private Label lbl_close;
     @FXML
@@ -40,6 +39,7 @@ public class LoginScreenController implements Initializable {
     @FXML
     private ImageView img_loginBackground;
     private DatabaseHandler db;
+
     /**
      * Initializes the controller class.
      */
@@ -50,13 +50,14 @@ public class LoginScreenController implements Initializable {
 //        pe.print();
         db = new DatabaseHandler();
         File file = new File("src/resources/tractor.jpg");
-        Image image = new Image(file.toURI().toString()) {};
+        Image image = new Image(file.toURI().toString()) {
+        };
         img_loginBackground.setImage(image);
         //img_loginBackground.setEffect(new GaussianBlur());
-        
-    }    
-    
-    public void loginEventHandler(){
+
+    }
+
+    public void loginEventHandler() {
         try {
             //txt_username = new TextField();
             //txt_password = new TextField();
@@ -65,18 +66,19 @@ public class LoginScreenController implements Initializable {
             String username = txt_username.getText();
             String password = txt_password.getText();
             System.out.println(username + "\t" + password);
-            if(username.equals("user") && password.equals("pass"))
+            if (username.equals("user") && password.equals("pass")) {
                 login_rootPane.getChildren().setAll(userPane);
-            else if(username.equals("admin") && password.equals("admin"))
+            } else if (username.equals("admin") && password.equals("admin")) {
                 login_rootPane.getChildren().setAll(adminPane);
-            else
+            } else {
                 System.out.println("Incorrect username or password!");
+            }
         } catch (IOException ex) {
             Logger.getLogger(LoginScreenController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void closeApp(){
+
+    public void closeApp() {
         System.exit(0);
     }
 }

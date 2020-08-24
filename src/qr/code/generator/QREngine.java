@@ -85,7 +85,7 @@ public class QREngine implements Observer{
             for (int i = 0; i < matrixWidth; i++) {
                     for (int j = 0; j < matrixWidth; j++) {
                             if (byteMatrix.get(i, j)) {
-                                    graphics.fillRect(i + 75, j - 10, 1, 1);                                                   //If we increase X axis in line 1 and 2 then increas it here too
+                                    graphics.fillRect(i + 15, j - 10, 1, 1);                //graphics.fillRect(i + 75, j - 10, 1, 1);                                    //If we increase X axis in line 1 and 2 then increas it here too
                             }
                     }
             }
@@ -100,7 +100,7 @@ public class QREngine implements Observer{
             Graphics g = image.getGraphics();
             g.setFont(new Font("Roboto", Font.BOLD, 21));
             g.setColor(Color.BLACK);
-            g.drawString("Tractor Sr: " + tractorNo, sizeX-355, sizeY-10);
+            g.drawString("Tractor Sr: " + tractorNo, sizeX-100, sizeY/2);
             g.dispose();
             
             ImageIO.write(image, "png", new File("src/resources/Mahindra_QR.png"));

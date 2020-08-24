@@ -13,100 +13,104 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="778.0" maxWidth="1432.0" minHeight="778.0" minWidth="1432.0" prefHeight="778.0" prefWidth="1432.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qr.code.generator.MainScreenController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1252.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qr.code.generator.MainScreenController">
     <children>
         <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="323.0" layoutX="36.0" layoutY="86.0" stroke="#f1f1f1" strokeType="INSIDE" width="658.0" AnchorPane.rightAnchor="738.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="276.0" layoutX="31.0" layoutY="58.0" stroke="#f1f1f1" strokeType="INSIDE" width="658.0" AnchorPane.rightAnchor="563.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="301.0" layoutX="36.0" layoutY="430.0" stroke="#f1f1f1" strokeType="INSIDE" width="658.0" AnchorPane.rightAnchor="738.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="276.0" layoutX="33.0" layoutY="358.0" stroke="#f1f1f1" strokeType="INSIDE" width="658.0" AnchorPane.rightAnchor="561.0">
          <effect>
             <DropShadow />
          </effect>
       </Rectangle>
-      <JFXListView layoutX="738.0" layoutY="86.0" prefHeight="645.0" prefWidth="658.0">
+      <JFXListView layoutX="725.0" layoutY="57.0" prefHeight="578.0" prefWidth="495.0">
          <effect>
             <DropShadow />
          </effect>
       </JFXListView>
-      <JFXTextField fx:id="txt_tractorSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="59.0" layoutY="160.0" prefHeight="25.0" prefWidth="172.0" promptText="Tractor Serial No" unFocusColor="#d89cf6" AnchorPane.leftAnchor="59.0">
+      <JFXTextField fx:id="txt_tractorSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="56.0" layoutY="118.0" prefHeight="25.0" prefWidth="172.0" promptText="Tractor Serial No" unFocusColor="#d89cf6" AnchorPane.leftAnchor="56.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_engineSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="279.0" layoutY="160.0" prefHeight="25.0" prefWidth="172.0" promptText="Engine Serial No" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_engineSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="276.0" layoutY="118.0" prefHeight="25.0" prefWidth="172.0" promptText="Engine Serial No" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_trasnmissionSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="493.0" layoutY="160.0" prefHeight="25.0" prefWidth="172.0" promptText="Transmission Serial No" unFocusColor="#d89cf6" AnchorPane.rightAnchor="767.0">
+      <JFXTextField fx:id="txt_trasnmissionSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="490.0" layoutY="118.0" prefHeight="25.0" prefWidth="172.0" promptText="Transmission Serial No" unFocusColor="#d89cf6" AnchorPane.rightAnchor="590.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_fipSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="59.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="FIP Serial No" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_fipSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="56.0" layoutY="171.0" prefHeight="25.0" prefWidth="172.0" promptText="FIP Serial No" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_hydraulicSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="279.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="Hydraulic Serial No" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_hydraulicSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="276.0" layoutY="171.0" prefHeight="25.0" prefWidth="172.0" promptText="Hydraulic Serial No" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_pumpSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="493.0" layoutY="223.0" prefHeight="25.0" prefWidth="172.0" promptText="Pump Serial No" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_pumpSerialNo" focusColor="#916dd5" labelFloat="true" layoutX="490.0" layoutY="171.0" prefHeight="25.0" prefWidth="172.0" promptText="Pump Serial No" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_chassisColour" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="59.0" layoutY="294.0" prefHeight="25.0" prefWidth="113.0" promptText="Chassis Colour" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_chassisColour" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="56.0" layoutY="227.0" prefHeight="25.0" prefWidth="113.0" promptText="Chassis Colour" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_exportDomestic" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="212.0" layoutY="294.0" prefHeight="25.0" prefWidth="120.0" promptText="Export/Domestic" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_exportDomestic" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="209.0" layoutY="227.0" prefHeight="25.0" prefWidth="120.0" promptText="Export/Domestic" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_model" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="365.0" layoutY="294.0" prefHeight="25.0" prefWidth="154.0" promptText="Model" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_model" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="362.0" layoutY="227.0" prefHeight="25.0" prefWidth="154.0" promptText="Model" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXTextField fx:id="txt_tyre" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="552.0" layoutY="294.0" prefHeight="25.0" prefWidth="113.0" promptText="Tyre" unFocusColor="#d89cf6">
+      <JFXTextField fx:id="txt_tyre" disable="true" focusColor="#916dd5" labelFloat="true" layoutX="549.0" layoutY="227.0" prefHeight="25.0" prefWidth="113.0" promptText="Tyre" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></JFXTextField>
-      <JFXButton fx:id="btn_reset" buttonType="RAISED" layoutX="104.0" layoutY="356.0" onAction="#resetButtonHandler" prefHeight="33.0" prefWidth="154.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Reset">
+      <JFXButton fx:id="btn_reset" buttonType="RAISED" layoutX="101.0" layoutY="283.0" onAction="#resetButtonHandler" prefHeight="33.0" prefWidth="154.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Reset">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btn_generate" buttonType="RAISED" layoutX="475.0" layoutY="356.0" onAction="#generateButtonHandler" prefHeight="33.0" prefWidth="154.0" style="-fx-background-color: #e8eaf6;" text="Generate">
+      <JFXButton fx:id="btn_generate" buttonType="RAISED" layoutX="472.0" layoutY="283.0" onAction="#generateButtonHandler" prefHeight="33.0" prefWidth="154.0" style="-fx-background-color: #e8eaf6;" text="Generate">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <AnchorPane layoutX="36.0" layoutY="430.0" prefHeight="301.0" prefWidth="658.0" />
-      <JFXButton buttonType="RAISED" layoutX="245.0" layoutY="690.0" prefHeight="33.0" prefWidth="240.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Print">
+      <JFXButton buttonType="RAISED" layoutX="242.0" layoutY="579.0" prefHeight="33.0" prefWidth="240.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Print">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="56.0" layoutY="108.0" text="Enter Details" textFill="#7c7777">
+      <Label layoutX="50.0" layoutY="75.0" text="Enter Details" textFill="#7c7777">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ToolBar layoutX="-2.0" maxHeight="40.0" minHeight="40.0" minWidth="1432.0" prefHeight="40.0" prefWidth="1438.0" style="-fx-background-color: #c5cae9;">
+      <ToolBar layoutX="-2.0" maxHeight="33.0" minHeight="33.0" minWidth="1252.0" prefHeight="33.0" prefWidth="1252.0" style="-fx-background-color: #c5cae9;">
          <effect>
             <DropShadow />
          </effect>
          <items>
-            <Label prefHeight="34.0" prefWidth="194.0" text="  QR Generator">
+            <ImageView fx:id="img_userBack" fitHeight="28.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../resources/back.png" />
+               </image>
+            </ImageView>
+            <Label prefHeight="34.0" prefWidth="194.0" text=" QR Generator">
                <font>
-                  <Font name="System Bold" size="23.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </items>
       </ToolBar>
-      <ImageView fx:id="img_QR" fitHeight="221.0" fitWidth="420.0" layoutX="181.0" layoutY="457.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="882.6666564941406" AnchorPane.topAnchor="457.0">
+      <ImageView fx:id="img_QR" fitHeight="201.0" fitWidth="336.0" layoutX="193.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="193.0" AnchorPane.rightAnchor="724.0" AnchorPane.topAnchor="366.0">
          <image>
-            <Image url="@../../../../empty_image.jpg" />
+            <Image url="@../../../resources/empty_image.jpg" />
          </image>
          <viewport>
             <Rectangle2D />
