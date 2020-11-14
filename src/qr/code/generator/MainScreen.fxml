@@ -81,7 +81,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="242.0" layoutY="579.0" prefHeight="33.0" prefWidth="240.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Print">
+      <JFXButton buttonType="RAISED" layoutX="242.0" layoutY="579.0" onAction="#printQRCode" prefHeight="33.0" prefWidth="240.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Print">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

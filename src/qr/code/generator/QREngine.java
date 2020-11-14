@@ -29,26 +29,21 @@ import javax.imageio.ImageIO;
  *
  * @author Spongebob
  */
-public class QREngine implements Observer{
-    @Override
-    public void update(Observable obs, Object dataObject){
-        ObservableDataModel dataModel = (ObservableDataModel) dataObject;
-        System.out.println("Observer Notified!");
-        generateQR(dataModel);
-    }
+public class QREngine{
 
-    public void generateQR(ObservableDataModel dataModel){
+
+    public void generateQR(ModelHolder dataModel){
 
         try {//ADD MORE CONTENT TO THE QR!!!!!
-            String qrCodeText = "Tractor Sr: " + dataModel.getTractorSerialNo() + 
-                                "\nEngine Sr: " + dataModel.getEngineSerialNo() + 
-                                "\nTransmission Sr: " + dataModel.getTransmissionSerialNo() +
-                                "\nFIP Sr: " + dataModel.getFipSerialNo() + 
-                                "\nHydraulic Sr: " + dataModel.getHydraulicSerialNo() + 
-                                "\nPump Sr: " + dataModel.getPumpSerialNo() +
-                                "\nChassis colour: " + dataModel.getChassisColour() + 
-                                "\nEx/Dom Sr: " + dataModel.getExportDomestic() + 
-                                "\nModel Sr: " + dataModel.getModel()+
+            String qrCodeText = "Tractor Sr: " + dataModel.getTractor_Series_No()+ 
+                                "\nEngine Sr: " + dataModel.getEngine_series_no() + 
+                                "\nTransmission Sr: " + dataModel.getTransmission_series_no() +
+                                "\nFIP Sr: " + dataModel.getFip_series_no() + 
+                                "\nHydraulic Sr: " + dataModel.getHydraulic_series_no() + 
+                                "\nPump Sr: " + dataModel.getPump_series_no() +
+                                "\nChassis colour: " + dataModel.getChassis_color() + 
+                                "\nEx/Dom Sr: " + dataModel.getExport_domestic() + 
+                                "\nModel Sr: " + dataModel.getModel() +
                                 "\nTyre: " + dataModel.getTyre();
             
             String filePath = "src/resources/Mahindra_QR.png";
@@ -57,7 +52,7 @@ public class QREngine implements Observer{
             File qrFile = new File(filePath);
             createQRImage(qrFile, qrCodeText, size, fileType);
             System.out.println("QR Generated!");
-            addQRText(dataModel.getTractorSerialNo());
+            addQRText(dataModel.getTractor_Series_No());
             System.out.print("Text added!");
         }catch(Exception ex){
             System.out.println(ex);
@@ -85,7 +80,8 @@ public class QREngine implements Observer{
             for (int i = 0; i < matrixWidth; i++) {
                     for (int j = 0; j < matrixWidth; j++) {
                             if (byteMatrix.get(i, j)) {
-                                    graphics.fillRect(i + 15, j - 10, 1, 1);                //graphics.fillRect(i + 75, j - 10, 1, 1);                                    //If we increase X axis in line 1 and 2 then increas it here too
+                                    //graphics.fillRect(i + 15, j - 10, 1, 1);                
+                                  graphics.fillRect(i + 75, j - 10, 1, 1);                                    //If we increase X axis in line 1 and 2 then increas it here too
                             }
                     }
             }

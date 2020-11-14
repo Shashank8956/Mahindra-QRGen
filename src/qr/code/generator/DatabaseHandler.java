@@ -25,7 +25,7 @@ public class DatabaseHandler {
     Statement stmt = null;
     PreparedStatement ps =null;
     ResultSet res = null;
-    ArrayList<ObservableDataModel> mod = new ArrayList<ObservableDataModel>();
+    ArrayList<ModelHolder> mod = new ArrayList<ModelHolder>();
     
 /**
  * Constructor of DataBase class. Tries to establish connection with the database
@@ -92,22 +92,6 @@ public class DatabaseHandler {
                               "tyre VARCHAR(150), "+
                               "material VARCHAR(30));";
         
-//        String settingsTable = "CREATE TABLE IF NOT EXISTS settings("+
-//                              "_id INTEGER PRIMARY KEY AUTOINCREMENT, "+
-//                              "UG INT NOT NULL, "+
-//                              "Umarks VARCHAR(10), "+
-//                              "Ucollege VARCHAR(100), "+
-//                              "Ubatch CHAR(5), "+
-//                              "Ubranch VARCHAR(30), "+
-//                              "Ucourse VARCHAR(30), "+
-//                
-//                              "Pmarks VARCHAR(10), "+
-//                              "Pcollege VARCHAR(100), "+
-//                              "Pbatch VARCHAR(5) , "+
-//                              "Pbranch VARCHAR(30), "+
-//                              "Pcourse VARCHAR(30));";
-        
-        
         try{
             stmt = conn.createStatement();
             stmt.executeUpdate(tractorSeriesTable);
@@ -147,6 +131,7 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
+    
 //<editor-fold defaultstate="collapsed" desc="Commented section">
 
 /**
@@ -364,6 +349,29 @@ public class DatabaseHandler {
 //    
         
 //</editor-fold>
+    public void insertHistory(ModelHolder modelObj){
+        try {
+            
+            String modelInsert =   "INSERT INTO history"+
+                    "(tractor_serial_no, engine_serial_no, transmission_serial_no, fip_serial_no, "
+                    + "hydraulic_serial_no, pump_serial_no, chassis_colour, export_domestic, model, tyre, material)"+
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+            
+            ps = conn.prepareStatement(modelInsert);
+            ps.setString(1, modelObj.getTractor_Series_No());
+            ps.setString(2, modelObj.getVariant());
+            ps.setInt(3, modelObj.getModel());
+            ps.setString(4, modelObj.getMaterial());
+            ps.setString(5, modelObj.getExport_domestic());
+            ps.setString(6, modelObj.getChassis_color());
+            
+            ps.execute();
+            ps = null;
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void insertModel(ModelHolder modelObj){
         try {
             
@@ -385,6 +393,7 @@ public class DatabaseHandler {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     
     public ModelHolder getModelData(String tractorSeriesNo){
         ModelHolder modelObj = new ModelHolder();
@@ -408,6 +417,34 @@ public class DatabaseHandler {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
         return modelObj;
+    }
+    
+    public ArrayList<ModelHolder> getModelSettingsData(){
+        
+        try {
+            
+            String querySelect = "SELECT * FROM model_settings; ";
+            System.out.println(querySelect);
+            ps = conn.prepareStatement(querySelect);
+            res = ps.executeQuery();
+            
+            while(res.next()){
+                ModelHolder modelObj = new ModelHolder();
+                modelObj.setTractor_Series_No(res.getString("tractor_series_no"));
+                modelObj.setVariant(res.getString("variant"));
+                modelObj.setModel(res.getInt("model"));
+                modelObj.setMaterial(res.getString("material")); 
+                modelObj.setExport_domestic(res.getString("export_domestic")); 
+                modelObj.setChassis_color(res.getString("chassis_color"));
+                
+                mod.add(modelObj);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println("Tractor No: = " + mod.get(0).getTractor_Series_No());
+        return mod;
     }
     
     public void clearAll(){

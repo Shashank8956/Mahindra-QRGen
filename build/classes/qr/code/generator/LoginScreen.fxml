@@ -63,15 +63,15 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </TextField>
-      <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="504.0" layoutY="374.0" onAction="#loginEventHandler" prefHeight="36.0" prefWidth="245.0" ripplerFill="#9e9e9e" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </JFXButton>
       <PasswordField fx:id="txt_password" layoutX="504.0" layoutY="310.0" prefHeight="36.0" prefWidth="245.0" promptText="Password">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </PasswordField>
+      <JFXButton fx:id="btn_login" buttonType="RAISED" layoutX="504.0" layoutY="374.0" onAction="#loginEventHandler" prefHeight="36.0" prefWidth="245.0" ripplerFill="#9e9e9e" style="-fx-background-color: #000000;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

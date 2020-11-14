@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javax.print.PrintException;
 
 /**
  *
@@ -54,10 +55,9 @@ public class MainScreenController implements Initializable {
     @FXML
     private ImageView img_QR, img_userBack;
     
-    
-    ObservableDataModel model = null;
+    ModelHolder model = null;
     DatabaseHandler DBhandler = new DatabaseHandler();
-    
+    QREngine qrgen = new QREngine();
     
     public void resetButtonHandler() {
         txt_tractorSerialNo.setText("");
@@ -95,40 +95,47 @@ public class MainScreenController implements Initializable {
     
     public void generateButtonHandler() {
       
-        model.setTractorSerialNo(txt_tractorSerialNo.getText());
-        model.setEngineSerialNo(txt_engineSerialNo.getText());
-        model.setTransmissionSerialNo(txt_trasnmissionSerialNo.getText());
-        model.setFipSerialNo(txt_fipSerialNo.getText());
-        model.setHydraulicSerialNo(txt_hydraulicSerialNo.getText());
-        model.setPumpSerialNo(txt_pumpSerialNo.getText());
+        model.setTractor_Series_No(txt_tractorSerialNo.getText());
+        model.setEngine_series_no(txt_engineSerialNo.getText());
+        model.setTransmission_series_no(txt_trasnmissionSerialNo.getText());
+        model.setFip_series_no(txt_fipSerialNo.getText());
+        model.setHydraulic_series_no(txt_hydraulicSerialNo.getText());
+        model.setPump_series_no(txt_pumpSerialNo.getText());
         
         populateFields();
         
-        model.setChassisColour(txt_chassisColour.getText());
-        model.setExportDomestic(txt_exportDomestic.getText());
-        model.setModel(txt_model.getText());
+        model.setChassis_color(txt_chassisColour.getText());
+        model.setExport_domestic(txt_exportDomestic.getText());
+        model.setModel(Integer.parseInt(txt_model.getText()));
         model.setTyre(txt_tyre.getText());
-
-        model.changeData();
+        
+        qrgen.generateQR(model);
+        
         File file = new File("src/resources/Mahindra_QR.png");
         Image image = new Image(file.toURI().toString()) {};
         img_QR.setImage(image);
+    }
+    
+    public void printQRCode(){
+        PrintEngine print = new PrintEngine();
+        try{
+            print.printQRCode();
+            DatabaseHandler dbHandler = new DatabaseHandler();
+            dbHandler.insertHistory(model);
+        }catch(PrintException pe){
+            System.out.println("Some shit must have happened while printing (PrintEngine.printQRCode)");
+            System.out.println(pe.getStackTrace());
+        }
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         DBhandler.createTables();
-        QREngine qrgen = new QREngine();
-        model = ObservableDataModel.getObservableDataModelInstance();
-        model.addObserver(qrgen);
-        
+        model = new ModelHolder();
         File file = new File("src/resources/empty_image.jpg");
         Image image = new Image(file.toURI().toString()) {};
         img_QR.setImage(image);
-        
-       
-        
     }    
     
 }

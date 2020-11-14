@@ -16,6 +16,12 @@ public class ModelHolder {
     String material;
     String export_domestic;
     String chassis_color;
+    String engine_series_no;
+    String transmission_series_no;
+    String fip_series_no;
+    String hydraulic_series_no;
+    String pump_series_no;
+    String tyre;
     
     ModelHolder(){}
     
@@ -53,6 +59,33 @@ public class ModelHolder {
     public String getChassis_color() {
         return chassis_color;
     }
+
+    public String getEngine_series_no() {
+        return engine_series_no;
+    }
+
+    public String getTransmission_series_no() {
+        return transmission_series_no;
+    }
+
+    public String getFip_series_no() {
+        return fip_series_no;
+    }
+
+    public String getHydraulic_series_no() {
+        return hydraulic_series_no;
+    }
+
+    public String getPump_series_no() {
+        return pump_series_no;
+    }
+
+    public String getTyre() {
+        return tyre;
+    }
+    
+    
+    
 //</editor-fold>
 
 //<editor-fold defaultstate="collapsed" desc="Setter">
@@ -81,5 +114,31 @@ public class ModelHolder {
         this.chassis_color = chassis_color;
     }
     
-//</editor-fold>
+    
+    public void setEngine_series_no(String engine_series_no) {
+        this.engine_series_no = engine_series_no;
+    }
+
+    public void setTransmission_series_no(String transmission_series_no) {
+        this.transmission_series_no = transmission_series_no;
+    }
+
+    public void setFip_series_no(String fip_series_no) {
+        this.fip_series_no = fip_series_no;
+    }
+
+    public void setHydraulic_series_no(String hydraulic_series_no) {
+        this.hydraulic_series_no = hydraulic_series_no;
+    }
+
+    public void setPump_series_no(String pump_series_no) {
+        this.pump_series_no = pump_series_no;
+    }
+
+    public void setTyre(String tyre) {
+        this.tyre = tyre;
+    }
 }
+
+    
+//</editor-fold>
