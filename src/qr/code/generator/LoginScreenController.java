@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package qr.code.generator;
 
 import java.io.File;
@@ -49,7 +45,7 @@ public class LoginScreenController implements Initializable {
 //        PrintEngine pe = new PrintEngine();
 //        pe.print();
         db = new DatabaseHandler();
-        File file = new File("src/resources/tractor.jpg");
+        File file = new File("resources/tractor.jpg");
         Image image = new Image(file.toURI().toString()) {
         };
         img_loginBackground.setImage(image);

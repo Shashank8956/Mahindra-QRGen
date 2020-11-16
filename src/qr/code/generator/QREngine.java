@@ -52,8 +52,8 @@ public class QREngine{
             File qrFile = new File(filePath);
             createQRImage(qrFile, qrCodeText, size, fileType);
             System.out.println("QR Generated!");
-            addQRText(dataModel.getTractor_Series_No());
-            System.out.print("Text added!");
+            //addQRText(dataModel.getTractor_Series_No());
+            //System.out.print("Text added!");
         }catch(Exception ex){
             System.out.println(ex);
         }

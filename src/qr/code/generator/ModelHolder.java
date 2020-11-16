@@ -22,6 +22,7 @@ public class ModelHolder {
     String hydraulic_series_no;
     String pump_series_no;
     String tyre;
+    String DateTime;
     
     ModelHolder(){}
     
@@ -32,6 +33,22 @@ public class ModelHolder {
         this.material = material;
         this.export_domestic = export_domestic;
         this.chassis_color = chassis_color;
+    }
+    
+    public void clear(){
+        model = 0;
+        tractor_Series_No = null;
+        variant = null;
+        material = null;
+        export_domestic = null;
+        chassis_color = null;
+        engine_series_no = null;
+        transmission_series_no = null;
+        fip_series_no = null;
+        hydraulic_series_no = null;
+        pump_series_no = null;
+        tyre = null;
+        DateTime = null;
     }
     
 //<editor-fold defaultstate="collapsed" desc="Getters">
@@ -84,7 +101,9 @@ public class ModelHolder {
         return tyre;
     }
     
-    
+    public String getDateTime() {
+        return DateTime;
+    }
     
 //</editor-fold>
 
@@ -138,7 +157,12 @@ public class ModelHolder {
     public void setTyre(String tyre) {
         this.tyre = tyre;
     }
+    
+    public void setDateTime(String DateTime){
+        this.DateTime = DateTime;
+    }
 }
 
     
 //</editor-fold>
+

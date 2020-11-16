@@ -80,9 +80,27 @@ public class PrintEngine {
         }
     }
     
-    public void printQRCode() throws PrintException {
+    public String prepareQRText(ModelHolder model){
+        String qrText = "";
+        qrText = "Tractor Sr: " + model.getTractor_Series_No() +
+                 "\nEngine Sr:" + model.getEngine_series_no() +
+                 "\nTrans Sr: " + model.getTransmission_series_no() +
+                 "\nHydraulic Sr: " + model.getHydraulic_series_no() +
+                 "\nPump Sr: " + model.getPump_series_no() +
+                 "\nFIP Sr: " + model.getFip_series_no() +
+                 "\nEx/dom: " + model.getExport_domestic() +
+                 "\nChassis Colour: " + model.getChassis_color() +
+                 "\nVariant: " + model.getVariant() +
+                 "\nTyre: " + model.getTyre();
+        //System.out.println(qrText);
+        return qrText;
+    }
+    
+    public void printQRCode(ModelHolder model) throws PrintException {
         PrintService ps = PrintServiceLookup.lookupDefaultPrintService();
         DocPrintJob job = ps.createPrintJob();
+        String qrText = prepareQRText(model);
+        
         String cmd = "^XA~TA000~JSN^LT0^MNW^MTT^PON^PMN^LH0,0^JMA^PR6,6~SD15^JUS^LRN^CI0^XZ\n"
                 + "^XA\n"
                 + "^MMT\n"
@@ -90,9 +108,10 @@ public class PrintEngine {
                 + "^LL0406\n"
                 + "^LS0\n"
                 + "^FT100,150^BQN,2,3\n"     //1st no: x axis distance, 2nd no: y axis distance, 3rd no: width, 4th No: height
-                + "^FH\\^FDLA,Tractor Sr: ABCDAJXAAA12345\\0D\\0AEngine Sr: KJHDKJVK687685FG\\0D\\0ATrans Sr: ABCDAJXAAA12345\\0D\\0APump Sr: KJHDKJVK687685FG^FS\n"
-                + "^FT255,90^A0N,28,28^FH\\^FDThis is a Test Text^FS\n"
+                + "^FH\\^FDLA," + qrText + "FG^FS\n"
+                + "^FT255,90^A0N,28,28^FH\\^FD"+ model.getTractor_Series_No() +"^FS\n"
                 + "^PQ1,0,1,Y^XZ";
+        
         DocFlavor flavor = DocFlavor.BYTE_ARRAY.AUTOSENSE;
         Doc doc = new SimpleDoc(cmd.getBytes(), flavor, null);
         job.print(doc, null);

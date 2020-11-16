@@ -90,7 +90,9 @@ public class DatabaseHandler {
                               "export_domestic VARCHAR(150), "+
                               "model VARCHAR(150), "+
                               "tyre VARCHAR(150), "+
-                              "material VARCHAR(30));";
+                              "material VARCHAR(30),"+
+                              "variant VARCHAR(30),"+
+                              "DateTime TEXT);";
         
         try{
             stmt = conn.createStatement();
@@ -131,239 +133,30 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
-    
-//<editor-fold defaultstate="collapsed" desc="Commented section">
-
-/**
- * This method returns a list of all the entries from the three tables (personal,
- * profession, academic) so as to assist populating the main JFXListView when the
- * application starts.
- * 
- * @return ArrayList<AlumniModel>
- */ /*   
-    public ArrayList<AlumniModel> getRowsData(){
-        try {
-            String querySelect = "SELECT * FROM personal "+
-                                  "JOIN academic ON personal._id = academic._id "+
-                                  "JOIN profession ON personal._id = profession._id "+
-                                  "JOIN contact ON personal._id = contact._id;";
-            
-            ps = conn.prepareStatement(querySelect);
-            res = ps.executeQuery();
-            ResultSet resJob = null;
-            //res.beforeFirst();
-            while(res.next()){
-                querySelect = "SELECT * FROM profession "+
-                              "WHERE _id = "+res.getInt("_id")+";";
-                ps = conn.prepareStatement(querySelect);
-                resJob = ps.executeQuery();
-                
-                while(resJob.next()){
-                    jobmod.add(new JobModel(res.getInt("_Id"), resJob.getString("CompanyName"), resJob.getString("Position"), resJob.getString("Location"), 
-                                            resJob.getString("DOJ"), resJob.getString("DOL"), Double.valueOf(resJob.getString("Package"))));
-                    //System.out.println("Company Name: = " + jobmod.get(0).getCompanyName());
-                }
-                
-                mod.add(new AlumniModel(res.getInt("_id"), res.getString("name"), res.getString("name"), res.getString("pic"),res.getString("Nationality"),
-                    res.getString("address"), res.getString("city"),res.getString("state"), res.getString("gender"), res.getString("dob"),
-                    res.getString("pincode"),res.getString("Ucollege"),res.getString("Ucourse"),res.getString("Ubranch"),res.getString("Umarks"),
-                    res.getInt("Ubatch"),res.getString("Pcollege"),res.getString("Pcourse"),res.getString("Pbranch"),
-                    res.getString("Pmarks"),res.getInt("Pbatch"),res.getInt("Placed"),res.getString("Remark"),res.getString("Mobile"),
-                    res.getString("Landline"),res.getString("Email"),res.getString("Linkedin"),res.getString("Facebook"),res.getString("Instagram"), jobmod, res.getInt("UG")));
-                
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return mod;
-    }
-    */
-    
-/**
- * This method is used to insert a new entry in the four tables (personal, contact, academic profession)
- * upon clicking the Main SAVE button. Initially the the entries of the personal
- * tab are inserted into the personal table. The value for _id column is not inserted
- * explicitly instead it is AUTO_INCREMENTed with a starting value of 1.
- * <p>
- * Once the data is inserted in the personal table, a SELECT query is run on the
- * personal table to get the _id of the last entry added. The extracted _id is then
- * added to the remaining tables to ensure that the FOREIGN KEY constraint is satisfied.
- * <p>
- * This function takes a single object of the AlumniModel class which contains all
- * the required fields entered by the user.
- * @param insertMod
- * @throws SQLException 
- */    
-//    public void insertData(AlumniModel insertMod) throws SQLException{
-//        int id=1;
-//        String personalInsert =   "INSERT INTO personal"+
-//                                  "(name, gender, dob, pic, nationality, address, city, state, pincode)"+
-//                                  "VALUES(?,?,?,?,?,?,?,?,?);";
-//        
-//        String contactInsert =    "INSERT INTO contact"+
-//                                  "(_id, mobile, landline, email, facebook, linkedin, instagram)"+
-//                                  "VALUES(?,?,?,?,?,?,?);";
-//        
-//        String academicInsert =   "INSERT INTO academic"+
-//                                  "(_id, Umarks, Ucollege, Ubatch, Ubranch, Ucourse,"+
-//                                  " Pmarks, Pcollege, Pbatch, Pbranch, Pcourse, UG)"+
-//                                  "VALUES(?,?,?,?,?,?,?,?,?,?,?, ?);";
-//        
-//        String professionInsert = "INSERT INTO profession"+
-//                                  "(_id, Placed, Companyname, Position, DOJ, Location, Package, Remark, DOL)"+
-//                                  "VALUES(?,?,?,?,?,?,?,?,?);";
-//
-//    /***Personal*****************************************/        
-//        ps = conn.prepareStatement(personalInsert);
-//        String name = insertMod.getFirstname() + " " + insertMod.getLastname();
-//        ps.setString(1, name);
-//        ps.setString(2, String.valueOf(insertMod.getGender()));
-//        ps.setString(3, insertMod.getDob());
-//        ps.setString(4, insertMod.getPic());
-//        ps.setString(5, insertMod.getNationality());
-//        ps.setString(6, insertMod.getAddress());
-//        ps.setString(7, insertMod.getCity());
-//        ps.setString(8, insertMod.getState());
-//        ps.setString(9, insertMod.getPincode());
-//        
-//        ps.execute();
-//        ps = null;
-//    /***************************************************/
-//        
-//        String querySelectID = "SELECT _id FROM personal;";
-//        stmt = conn.createStatement();
-//        res = stmt.executeQuery(querySelectID);
-//        res.last();
-//        id = res.getInt("_id");
-//        
-//    /***Contact*****************************************/ 
-//        ps = conn.prepareStatement(contactInsert);
-//        ps.setInt(1, id);
-//        ps.setString(2, String.valueOf(insertMod.getMobile()));
-//        ps.setString(3, String.valueOf(insertMod.getLandline()));
-//        ps.setString(4, insertMod.getEmail());
-//        ps.setString(5, insertMod.getFacebook());
-//        ps.setString(6, insertMod.getLinkedin());
-//        ps.setString(7, insertMod.getInstagram());
-//        
-//        ps.execute();
-//        ps = null;
-//        
-//    /***Academic****************************************/    
-//        ps = conn.prepareStatement(academicInsert);
-//        ps.setInt(1, id);
-//        ps.setString(2, insertMod.getPassUG());
-//        ps.setString(3, insertMod.getCollegeNameUG());
-//        ps.setInt(4, insertMod.getBatchUG());
-//        ps.setString(5, insertMod.getBranchUG());
-//        ps.setString(6, insertMod.getCourseUG());
-//        ps.setString(7, insertMod.getPassPG());
-//        ps.setString(8, insertMod.getCollegeNamePG());
-//        ps.setInt(9, insertMod.getBatchPG());
-//        ps.setString(10, insertMod.getBranchPG());
-//        ps.setString(11, insertMod.getCoursePG());
-//        ps.setInt(12, insertMod.getEducationLevel());
-//        
-//        ps.execute();
-//        ps = null;
-//        
-//    /***Profession**************************************/
-//        if(insertMod.getJobmod().size()>0){
-//            for(int i=0; i<insertMod.getJobmod().size(); i++){
-//                ps = conn.prepareStatement(professionInsert);
-//                ps.setInt(1, id);
-//                ps.setInt(2, insertMod.getPlaced());
-//                ps.setString(3, insertMod.getJobmod().get(i).getCompanyName());
-//                ps.setString(4, insertMod.getJobmod().get(i).getDesignation());
-//                ps.setString(5, insertMod.getJobmod().get(i).getDoj());
-//                ps.setString(6, insertMod.getJobmod().get(i).getLocation());
-//                ps.setDouble(7, insertMod.getJobmod().get(i).getAnnualPackage());
-//                ps.setString(8, insertMod.getRemark());
-//                ps.setString(9, insertMod.getJobmod().get(i).getDol());
-//
-//                ps.execute();
-//                ps = null;
-//            }
-//        }else{
-//                ps = conn.prepareStatement(professionInsert);
-//                ps.setInt(1, id);
-//                ps.setInt(2, insertMod.getPlaced());
-//                ps.setString(3, null);
-//                ps.setString(4, null);
-//                ps.setString(5, null);
-//                ps.setString(6, null);
-//                ps.setDouble(7, 0.0);
-//                ps.setString(8, insertMod.getRemark());
-//                ps.setString(9, null);
-//
-//                ps.execute();
-//                ps = null;
-//        }
-//    }
-//    
-//    public void updateRow(String updateQuery){
-//        try {
-//            ps = conn.prepareStatement(updateQuery);
-//            ps.execute();
-//        } catch (SQLException ex) {
-//            Alert al = new Alert(Alert.AlertType.ERROR);
-//            al.setTitle("Update Error!");
-//            al.setContentText("Unable to update record!");
-//            al.setHeaderText(null);
-//            al.show();
-//            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//    
-//    public void deleteRow(int id){
-//        
-//        String personalTable = "DELETE from personal "+
-//                               "WHERE _id='"+id+"';";
-//
-//        String contactTable = "DELETE from contact "+
-//                              "WHERE _id='"+id+"';";
-//
-//        String academicTable = "DELETE from academic "+
-//                               "WHERE _id='"+id+"';";
-//
-//        String professionTable = "DELETE from profession "+
-//                                 "WHERE _id='"+id+"';";
-//        try {  
-//            stmt = conn.createStatement();
-//            stmt.executeUpdate(contactTable);
-//            
-//            stmt = conn.createStatement();
-//            stmt.executeUpdate(academicTable);
-//            
-//            stmt = conn.createStatement();
-//            stmt.executeUpdate(professionTable);
-//            
-//            stmt = conn.createStatement();
-//            stmt.executeUpdate(personalTable);
-//            
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//    
-        
-//</editor-fold>
+  
     public void insertHistory(ModelHolder modelObj){
         try {
             
             String modelInsert =   "INSERT INTO history"+
                     "(tractor_serial_no, engine_serial_no, transmission_serial_no, fip_serial_no, "
-                    + "hydraulic_serial_no, pump_serial_no, chassis_colour, export_domestic, model, tyre, material)"+
-                    "VALUES(?,?,?,?,?,?,?,?,?,?,?);";
+                    + "hydraulic_serial_no, pump_serial_no, chassis_colour, export_domestic, model, tyre, material, variant, DateTime)"+
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?, datetime('now','localtime'));";
             
+            System.out.println("************************\nInside Insert history settings\nSize of model: " + modelObj.getTractor_Series_No());
+        
             ps = conn.prepareStatement(modelInsert);
             ps.setString(1, modelObj.getTractor_Series_No());
-            ps.setString(2, modelObj.getVariant());
-            ps.setInt(3, modelObj.getModel());
-            ps.setString(4, modelObj.getMaterial());
-            ps.setString(5, modelObj.getExport_domestic());
-            ps.setString(6, modelObj.getChassis_color());
+            ps.setString(2, modelObj.getEngine_series_no());
+            ps.setString(3, modelObj.getTransmission_series_no());
+            ps.setString(4, modelObj.getFip_series_no());
+            ps.setString(5, modelObj.getHydraulic_series_no());
+            ps.setString(6, modelObj.getPump_series_no());
+            ps.setString(7, modelObj.getChassis_color());
+            ps.setString(8, modelObj.getExport_domestic());
+            ps.setInt(9, modelObj.getModel());
+            ps.setString(10, modelObj.getTyre());
+            ps.setString(11, modelObj.getMaterial());
+            ps.setString(12, modelObj.getVariant());
             
             ps.execute();
             ps = null;
@@ -389,6 +182,8 @@ public class DatabaseHandler {
             
             ps.execute();
             ps = null;
+            System.out.println("************************\nInside Insert model settings\nSize of model: " + modelObj.getTractor_Series_No());
+        
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -411,7 +206,7 @@ public class DatabaseHandler {
                 modelObj.setMaterial(res.getString("material")); 
                 modelObj.setExport_domestic(res.getString("export_domestic")); 
                 modelObj.setChassis_color(res.getString("chassis_color"));
-                    //System.out.println("Company Name: = " + jobmod.get(0).getCompanyName());
+                System.out.println("Company Name: = " + modelObj.getTractor_Series_No());
             }
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
@@ -443,7 +238,47 @@ public class DatabaseHandler {
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Tractor No: = " + mod.get(0).getTractor_Series_No());
+        //System.out.println("Tractor No: = " + mod.get(0).getTractor_Series_No());
+        return mod;
+    }
+    
+    public ArrayList<ModelHolder> getHistoryData(){
+        
+        try {
+            
+            String querySelect = "SELECT * FROM history ORDER BY _id DESC; ";
+            System.out.println(querySelect);
+            ps = conn.prepareStatement(querySelect);
+            res = ps.executeQuery();
+            
+            String modelInsert =   "INSERT INTO history"+
+                    "(tractor_serial_no, engine_serial_no, transmission_serial_no, fip_serial_no, "
+                    + "hydraulic_serial_no, pump_serial_no, chassis_colour, export_domestic, model, tyre, material, variant, DateTime)"+
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+            
+            while(res.next()){
+                ModelHolder modelObj = new ModelHolder();
+                modelObj.setTractor_Series_No(res.getString("tractor_serial_no"));
+                modelObj.setEngine_series_no(res.getString("engine_serial_no"));
+                modelObj.setTransmission_series_no("transmission_serial_no");
+                modelObj.setFip_series_no(res.getString("fip_serial_no")); 
+                modelObj.setHydraulic_series_no(res.getString("hydraulic_serial_no")); 
+                modelObj.setPump_series_no(res.getString("pump_serial_no"));
+                modelObj.setChassis_color(res.getString("chassis_colour"));
+                modelObj.setExport_domestic(res.getString("export_domestic"));
+                modelObj.setModel(res.getInt("model"));
+                modelObj.setTyre(res.getString("tyre")); 
+                modelObj.setMaterial(res.getString("material")); 
+                modelObj.setVariant(res.getString("variant"));
+                modelObj.setDateTime(res.getString("DateTime"));
+                
+                mod.add(modelObj);
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //System.out.println("Tractor No: = " + mod.get(0).getTractor_Series_No());
         return mod;
     }
     

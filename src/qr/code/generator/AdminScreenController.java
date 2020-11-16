@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -76,21 +77,26 @@ public class AdminScreenController implements Initializable {
                 modelObj.setMaterial(material);
                 modelObj.setTractor_Series_No(tractor_series_no);
                 modelObj.setVariant(variant);
+                
+                //DBhandler.clearAll();
+                DBhandler.createTables();
+                DBhandler.insertModel(modelObj);
+                System.out.println(modelObj.getTractor_Series_No());
+                System.out.println(modelObj.getVariant());
+                System.out.println(modelObj.getModel());
+                System.out.println(modelObj.getExport_domestic());
+                System.out.println(modelObj.getMaterial());
+                clearInputs();
+                populateList();
+            }else{
+                Alert al = new Alert(Alert.AlertType.WARNING);
+                al.setTitle("Incomplete data");
+                String msg = "Please fill all the fields";
+                al.setContentText(msg);
+                al.setHeaderText(null);
+                al.show();
             }
         }
-        if(modelObj.getMaterial().length()!=0){
-            //DBhandler.clearAll();
-            DBhandler.createTables();
-            //DBhandler.insertModel(modelObj);
-            System.out.println(modelObj.getTractor_Series_No());
-            System.out.println(modelObj.getVariant());
-            System.out.println(modelObj.getModel());
-            System.out.println(modelObj.getExport_domestic());
-            System.out.println(modelObj.getMaterial());
-            clearInputs();
-            populateList();
-        }    
-        
     }
     
     public void clearInputs(){
