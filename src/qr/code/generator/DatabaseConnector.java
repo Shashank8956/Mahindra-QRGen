@@ -11,14 +11,15 @@ import javafx.scene.control.Alert;
  * @author Spongebob
  */
 public class DatabaseConnector {
-    /**
+ /**
  * This is the only method in this class. It's a static method and its job to 
  * establish a connection with the database using the JDBC connector. It returns
  * the java.sql.Connection object if a connection has been established, else it 
  * returns null if some error occurs.
  * 
  * @return Connection
- */    
+ */
+    
     public static Connection Connect(){
         try {
             // db parameters
@@ -30,8 +31,9 @@ public class DatabaseConnector {
             //Class.forName("com.mysql.jdbc.Driver");
             
             // create a connection to the database
-            Connection conn = DriverManager.getConnection(urlSqlite, username, password);
+            Connection conn = DriverManager.getConnection(urlSqlite/*, username, password*/);
             return conn;
+            
         } catch (Exception e) {
             Alert al = new Alert(Alert.AlertType.ERROR);
             al.setTitle("Error connecting to the database!");

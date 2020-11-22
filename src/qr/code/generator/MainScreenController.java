@@ -154,7 +154,7 @@ public class MainScreenController implements Initializable {
                     al.setHeaderText(null);
                     al.show();
         }else{  
-            //print.printQRCode(model);
+            print.printQRCode(model);
             DatabaseHandler dbHandler = new DatabaseHandler();
             dbHandler.insertHistory(model);
             resetButtonHandler();
@@ -275,7 +275,7 @@ public class MainScreenController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        DBhandler.clearAll();
+        //DBhandler.clearAll();
         DBhandler.createTables();
         
         model = new ModelHolder();

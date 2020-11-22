@@ -42,9 +42,9 @@ public class LoginScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-//        PrintEngine pe = new PrintEngine();
-//        pe.print();
         db = new DatabaseHandler();
+        
+        
         File file = new File("resources/tractor.jpg");
         Image image = new Image(file.toURI().toString()) {
         };
@@ -57,6 +57,9 @@ public class LoginScreenController implements Initializable {
         try {
             //txt_username = new TextField();
             //txt_password = new TextField();
+            //FileHandler fh = new FileHandler();
+            //fh.changeFileName(0);
+        
             AnchorPane userPane = FXMLLoader.load(getClass().getResource("MainScreen.fxml"));
             AnchorPane adminPane = FXMLLoader.load(getClass().getResource("AdminScreen.fxml"));
             String username = txt_username.getText();

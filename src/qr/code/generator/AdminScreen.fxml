@@ -3,7 +3,6 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXToggleButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ToolBar?>
@@ -38,11 +37,6 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="dark_mode" layoutX="22.0" layoutY="65.0" prefHeight="58.0" prefWidth="138.0" text="Dark Mode">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </JFXToggleButton>
             <JFXButton buttonType="RAISED" layoutX="199.0" layoutY="240.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="33.0" prefWidth="240.0" ripplerFill="#916dd5" style="-fx-background-color: #e8eaf6;" text="Print">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -77,12 +71,22 @@
             </Label>
          </items>
       </ToolBar>
+      <JFXTextField fx:id="txt_tractor_series_no" focusColor="#916dd5" labelFloat="true" layoutX="53.0" layoutY="126.0" prefHeight="25.0" prefWidth="172.0" promptText="Tractor Series No" unFocusColor="#d89cf6">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
       <JFXTextField fx:id="txt_modelNo" focusColor="#916dd5" labelFloat="true" layoutX="276.0" layoutY="126.0" prefHeight="25.0" prefWidth="172.0" promptText="Model No" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
       <JFXTextField fx:id="txt_material" focusColor="#916dd5" labelFloat="true" layoutX="482.0" layoutY="126.0" prefHeight="25.0" prefWidth="172.0" promptText="Material" unFocusColor="#d89cf6">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="txt_variant" focusColor="#916dd5" labelFloat="true" layoutX="53.0" layoutY="177.0" prefHeight="25.0" prefWidth="172.0" promptText="Variant" unFocusColor="#d89cf6">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -97,20 +101,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txt_variant" focusColor="#916dd5" labelFloat="true" layoutX="53.0" layoutY="177.0" prefHeight="25.0" prefWidth="172.0" promptText="Variant" unFocusColor="#d89cf6">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
       <JFXButton buttonType="RAISED" layoutX="242.0" layoutY="234.0" onAction="#addModelDataButtonHandler" prefHeight="33.0" prefWidth="240.0" style="-fx-background-color: #e8eaf6;" text="Add/Edit">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="txt_tractor_series_no" focusColor="#916dd5" labelFloat="true" layoutX="53.0" layoutY="126.0" prefHeight="25.0" prefWidth="172.0" promptText="Tractor Series No" unFocusColor="#d89cf6">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </JFXTextField>
     </children>
 </AnchorPane>
